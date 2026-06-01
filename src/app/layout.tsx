@@ -23,8 +23,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PaperTradeX",
-  description: "Terminal-meets-trading-floor simulator",
+  title: 'PaperTradeX — Trade fake money. Learn your real patterns.',
+  description:
+    'Real-time paper trading simulator with AI coaching that builds your behavioral bias fingerprint. Trade stocks and crypto risk-free.',
 };
 
 export default function RootLayout({
@@ -33,9 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-bg text-text min-h-screen flex`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-bg text-text min-h-screen`}
       >
         <Providers>{children}</Providers>
       </body>

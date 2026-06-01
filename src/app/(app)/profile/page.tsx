@@ -25,7 +25,7 @@ export default function ProfilePage() {
     <div className="p-8 space-y-8">
       <header>
         <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Analysis</h2>
-        <h1 className="text-4xl font-display font-bold text-[#1A1D25]">Behavioral Fingerprint</h1>
+        <h1 className="text-4xl font-display font-bold text-text">Behavioral Fingerprint</h1>
         <p className="text-text-muted mt-2 max-w-2xl">
           Your unique trading DNA. The AI coach tracks your decisions to build this profile, 
           identifying the psychological patterns that impact your performance.
@@ -48,8 +48,8 @@ export default function ProfilePage() {
           <div className="h-[400px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-                <PolarGrid stroke="#E2E8F0" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: '#4A5568', fontSize: 12, fontWeight: 'bold' }} />
+                <PolarGrid stroke="#1E2028" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: '#6B7280', fontSize: 12, fontWeight: 'bold' }} />
                 <Radar
                   name="Bias Intensity"
                   dataKey="A"
@@ -72,7 +72,7 @@ export default function ProfilePage() {
             </div>
             <div className="p-4 bg-bg rounded-radius-card border border-border/50">
               <div className="text-[10px] text-text-muted uppercase font-bold tracking-widest mb-1">Trades Analyzed</div>
-              <div className="text-xl font-display font-bold text-[#1A1D25]">42</div>
+              <div className="text-xl font-display font-bold text-text">42</div>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function ProfilePage() {
                   "You're buying into a massive green candle... Your brain is screaming 'don't miss out', but history says this is where the dump starts."
                 </p>
               </div>
-              <button className="px-4 py-2 border border-border rounded-radius-button text-sm font-bold hover:bg-bg transition-all self-start md:self-center">
+              <button className="px-4 py-2 border border-border rounded-radius-button text-sm font-bold hover:bg-bg transition-colors duration-200 cursor-pointer self-start md:self-center">
                 Review Case
               </button>
             </div>
@@ -154,7 +154,7 @@ function BiasCard({ label, count, severity, description }: any) {
   return (
     <div className="p-5 bg-surface border border-border rounded-radius-card hover:shadow-md transition-all group">
       <div className="flex justify-between items-start mb-2">
-        <div className="font-display font-bold text-[#1A1D25] group-hover:text-primary transition-colors">{label}</div>
+        <div className="font-display font-bold text-text group-hover:text-primary transition-colors duration-200">{label}</div>
         <div className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${severityColors[severity as keyof typeof severityColors]}`}>
           {count} Cases
         </div>

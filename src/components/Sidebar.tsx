@@ -11,6 +11,7 @@ import {
   Settings,
   LineChart,
 } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -60,13 +61,17 @@ const Sidebar = () => {
         />
       </nav>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-2">
         <NavItem
           href="/settings"
           icon={<Settings className="w-5 h-5" />}
           label="Settings"
           active={pathname === '/settings'}
         />
+        <div className="flex items-center justify-between px-3 py-1">
+          <span className="text-xs text-text-muted font-medium">Theme</span>
+          <ThemeToggle />
+        </div>
       </div>
     </aside>
   );

@@ -65,6 +65,21 @@ export default function PracticePage() {
       price: trade.price,
       quantity: trade.quantity,
       market_context: { change_24h: trade.change_24h },
+      portfolio_context: {
+        cash: portfolio.cash,
+        startingCash: portfolio.startingCash,
+        positions: portfolio.positions.map((p) => ({
+          ticker: p.ticker,
+          quantity: p.quantity,
+          avgCost: p.avgCost,
+        })),
+        trades: portfolio.trades.map((t) => ({
+          ticker: t.ticker,
+          action: t.action,
+          price: t.price,
+          executedAt: t.executedAt,
+        })),
+      },
     });
 
     const err = executeTrade({
@@ -147,11 +162,18 @@ export default function PracticePage() {
         {/* Right panel */}
         <div className="col-span-12 lg:col-span-8 space-y-6">
           {/* Stat cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCard
-              label="Portfolio value"
+              label="Total wealth"
               value={`$${metrics.totalValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}`}
+              sub="cash + positions at market"
               icon={<Wallet className="w-5 h-5 text-primary" />}
+            />
+            <StatCard
+              label="Invested"
+              value={`$${metrics.positionsValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}`}
+              sub={`${metrics.positionRows.length} position${metrics.positionRows.length !== 1 ? 's' : ''}`}
+              icon={<BarChart3 className="w-5 h-5 text-accent" />}
             />
             <StatCard
               label="Total P&L"
@@ -169,6 +191,7 @@ export default function PracticePage() {
             <StatCard
               label="Cash available"
               value={`$${portfolio.cash.toLocaleString(undefined, { maximumFractionDigits: 2 })}`}
+              sub={`of $${portfolio.startingCash.toLocaleString()} starting`}
               icon={<Wallet className="w-5 h-5 text-text-muted" />}
             />
           </div>

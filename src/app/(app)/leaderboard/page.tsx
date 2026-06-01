@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Users, Trophy, Target, BookOpen, ChevronUp, ChevronDown } from 'lucide-react';
+import { Users, Trophy, Target, BookOpen, ChevronUp, Crown } from 'lucide-react';
 
 const leaderboardData = [
   { rank: 1, name: 'Jordan D.', return: 24.5, biasScore: 92, modules: 4, avatar: 'JD' },
@@ -20,7 +20,7 @@ export default function LeaderboardPage() {
       <header className="flex justify-between items-start">
         <div>
           <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Competition</h2>
-          <h1 className="text-4xl font-display font-bold text-[#1A1D25]">Finance 101 — Fall 2026</h1>
+          <h1 className="text-4xl font-display font-bold text-text">Finance 101 — Fall 2026</h1>
           <div className="flex items-center gap-4 mt-2">
             <div className="flex items-center gap-1.5 text-xs text-text-muted font-medium bg-bg px-2 py-1 rounded border border-border">
               <Users className="w-4 h-4" />
@@ -33,7 +33,7 @@ export default function LeaderboardPage() {
           </div>
         </div>
         <div className="flex gap-2">
-          <button className="px-4 py-2 bg-[#1A1D25] text-white rounded-radius-button text-sm font-bold hover:bg-black transition-all">
+          <button className="px-4 py-2 bg-primary text-text-inverse rounded-radius-button text-sm font-bold hover:bg-primary-hover transition-colors duration-200 cursor-pointer">
             Join Group
           </button>
         </div>
@@ -75,7 +75,7 @@ export default function LeaderboardPage() {
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
                       student.rank === 1 ? 'bg-warning text-white shadow-lg shadow-warning/20' : 
                       student.rank === 2 ? 'bg-slate-300 text-slate-700' :
-                      student.rank === 3 ? 'bg-amber-600/30 text-amber-900' :
+                      student.rank === 3 ? 'bg-amber-600/30 text-amber-500' :
                       'text-text-muted'
                     }`}>
                       {student.rank}
@@ -86,7 +86,10 @@ export default function LeaderboardPage() {
                       <div className="w-10 h-10 bg-bg border border-border rounded-full flex items-center justify-center text-xs font-bold text-text-muted">
                         {student.avatar}
                       </div>
-                      <div className="font-display font-bold text-[#1A1D25]">{student.name} {student.rank === 1 && '👑'}</div>
+                      <div className="font-display font-bold text-text flex items-center gap-1.5">
+                        {student.name}
+                        {student.rank === 1 && <Crown className="w-3.5 h-3.5 text-warning" />}
+                      </div>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -145,7 +148,7 @@ function StatCard({ label, value, icon }: any) {
           {React.cloneElement(icon, { size: 16 })}
         </div>
       </div>
-      <div className="text-2xl font-display font-bold text-[#1A1D25]">{value}</div>
+      <div className="text-2xl font-display font-bold text-text">{value}</div>
     </div>
   );
 }
@@ -154,7 +157,7 @@ function SortButton({ children, active, onClick }: any) {
   return (
     <button 
       onClick={onClick}
-      className={`px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded transition-all ${
+      className={`cursor-pointer px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded transition-colors duration-200 ${
         active ? 'bg-surface text-primary shadow-sm border border-border/50' : 'text-text-muted hover:text-text'
       }`}
     >

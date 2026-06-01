@@ -61,7 +61,7 @@ export default function EducationPage() {
       <header className="flex justify-between items-end">
         <div>
           <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Learning Path</h2>
-          <h1 className="text-4xl font-display font-bold text-[#1A1D25]">Education Center</h1>
+          <h1 className="text-4xl font-display font-bold text-text">Education Center</h1>
           <p className="text-text-muted mt-2 max-w-2xl">
             Master the fundamentals to unlock advanced trading instruments. 
             Complete modules to earn certificates and improve your risk-adjusted score.
@@ -86,12 +86,12 @@ export default function EducationPage() {
 
       <div className="mt-12 p-8 bg-bg border border-border rounded-radius-card flex flex-col items-center text-center">
         <Lock className="w-12 h-12 text-text-muted mb-4" />
-        <h3 className="text-2xl font-display font-bold text-[#1A1D25]">Unlock Advanced Trading</h3>
+        <h3 className="text-2xl font-display font-bold text-text">Unlock Advanced Trading</h3>
         <p className="text-text-muted mt-2 max-w-lg">
           Trading options and extended altcoins is currently locked. 
           Complete the <strong>Risk Management 101</strong> and <strong>Options Prerequisites</strong> modules to gain access.
         </p>
-        <button className="mt-6 px-8 py-3 bg-[#1A1D25] text-white rounded-radius-button font-bold hover:bg-black transition-all">
+        <button className="mt-6 px-8 py-3 bg-primary text-text-inverse rounded-radius-button font-bold hover:bg-primary-hover transition-colors duration-200 cursor-pointer">
           Continue Learning
         </button>
       </div>
@@ -150,7 +150,7 @@ function ModuleCard({
         </div>
 
         <div>
-          <h3 className="text-xl font-display font-bold text-[#1A1D25] group-hover:text-primary transition-colors">{title}</h3>
+          <h3 className="text-xl font-display font-bold text-text group-hover:text-primary transition-colors duration-200">{title}</h3>
           <p className="text-sm text-text-muted mt-2 leading-relaxed">
             {description}
           </p>
@@ -182,7 +182,7 @@ function ModuleCard({
             <PlayCircle className="w-4 h-4" />
           </Link>
         ) : (
-          <button className="text-primary text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2">
+          <button className="cursor-pointer text-primary text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2 transition-colors duration-200">
             {actionLabel}
             <PlayCircle className="w-4 h-4" />
           </button>
