@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-bg: #0A0B0E;
+  --color-surface: #13151A;
+  --color-border: #1E2028;
+  --color-primary: #00E5A0;
+  --color-primary-hover: #00C688;
+  --color-accent: #7B61FF;
+  --color-text: #F0F2F5;
+  --color-text-inverse: #0A0B0E;
+  --color-text-muted: #6B7280;
+  --color-success: #00E5A0;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* Typography */
+  --font-space-grotesk: var(--font-space-grotesk);
+  --font-inter: var(--font-inter);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.5);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.7);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.9);
+
+  /* Spacing (Base 4px) */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+
+  /* Radius */
+  --radius-button: 10px;
+  --radius-card: 16px;
+  --radius-ai-panel: 20px;
+}
+
+:root {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
