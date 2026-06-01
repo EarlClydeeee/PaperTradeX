@@ -10,6 +10,38 @@ PaperTradeX is a unified crypto + stock paper trading simulator with an AI bias 
 
 ---
 
+## Devpost project description
+
+Copy-paste ready for your [Devpost](https://devpost.com) submission.
+
+### What issue are you solving?
+
+Young investors lose an average of **$3,200 in their first year** — not because they lack information, but because **emotional decision-making** overrides their research. **71% of retail investors underperform the S&P 500**, driven by patterns like FOMO-chasing rallies, panic-selling drawdowns, and revenge-trading after losses.
+
+Every existing paper trading app — Webull Paper, Thinkorswim Simulated, Investopedia — replicates the trading interface but offers **zero coaching or behavioral feedback**. Users graduate from simulators to real accounts having practiced the same bad habits at zero cost and zero learning. Nobody tells them *why* they keep making the same mistakes.
+
+### How does your project address it?
+
+**PaperTradeX** is a real-time paper trading simulator for stocks and crypto that uses live market data and an **AI coach** to teach young investors *why* they keep making emotional mistakes — not just *what* the market is doing.
+
+After every buy or sell:
+
+1. The **AI Coach panel** slides in and names the cognitive bias (FOMO, panic sell, overconfidence, loss aversion, recency bias, anchoring, disposition effect) in plain English — with a psychology explanation, not jargon.
+2. The trade adds a data point to the user's **behavioral fingerprint** — an accumulating radar profile that gets more accurate the more they trade.
+3. Portfolio metrics update from **live prices** (CoinGecko for crypto, Finnhub for stocks) in one unified portfolio for BTC, ETH, SOL, and major US equities.
+
+Beyond the simulator, PaperTradeX includes **school leaderboards** (rank by return, bias control, or module completion), **education modules** that gate advanced instruments until students pass quizzes, and a full **investor pitch deck** at `/pitch` — so learning and trading are the same product.
+
+**Try it:** `/practice` — execute a trade and watch the AI coach flag your bias in real time.
+
+### What was the hardest part of the build?
+
+The hardest part was shipping a **credible AI coaching loop before the LLM backend was ready**. We wanted feedback on every trade from day one, but wiring GPT-4o-mini requires Supabase Edge Functions and server-side key management. We built a **7-bias heuristic engine** (`src/lib/coach.ts`) that uses real trade context — 24h price move, position size, trade history, entry price — and returns the same structured output the LLM will eventually produce. The UI works now; swapping in live AI is a backend change, not a rewrite.
+
+Close second: **unifying the marketing site and app into one Next.js project**. Merging two codebases with route groups broke CSS layout, stale build cache caused route errors, and the fixed sidebar made mobile unusable until we rebuilt navigation as a drawer with full-width trade and coach panels.
+
+---
+
 ## Features
 
 - **Paper trading** — Buy and sell BTC, ETH, SOL, AAPL, NVDA, MSFT, TSLA, SPY with $50,000 starting cash
