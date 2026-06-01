@@ -1,54 +1,108 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-bg: #0A0B0E;
-  --color-surface: #13151A;
-  --color-border: #1E2028;
-  --color-primary: #00E5A0;
+  /* ── Colors ───────────────────────────────── */
+  --color-bg:            #0A0B0E;
+  --color-surface:       #13151A;
+  --color-border:        #1E2028;
+  --color-primary:       #00E5A0;
   --color-primary-hover: #00C688;
-  --color-accent: #7B61FF;
-  --color-text: #F0F2F5;
-  --color-text-inverse: #0A0B0E;
-  --color-text-muted: #6B7280;
-  --color-success: #00E5A0;
-  --color-warning: #F59E0B;
-  --color-error: #EF4444;
+  --color-accent:        #7B61FF;
+  --color-text:          #F0F2F5;
+  --color-text-inverse:  #0A0B0E;
+  --color-text-muted:    #6B7280;
+  --color-success:       #00E5A0;
+  --color-warning:       #F59E0B;
+  --color-error:         #EF4444;
 
-  /* Typography */
-  --font-space-grotesk: var(--font-space-grotesk);
-  --font-inter: var(--font-inter);
-  --font-jetbrains-mono: var(--font-jetbrains-mono);
+  /* ── Typography — creates font-display / font-sans / font-mono utilities ── */
+  --font-display:        var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-sans:           var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono:           var(--font-jetbrains-mono), "JetBrains Mono", monospace;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.5);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.7);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.9);
+  /* ── Shadows ──────────────────────────────── */
+  --shadow-sm:  0 1px 4px  rgba(0,0,0,0.5);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.7);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.9);
 
-  /* Spacing (Base 4px) */
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-6: 24px;
-  --spacing-8: 32px;
+  /* ── Spacing (4px base) ───────────────────── */
+  --spacing-1:  4px;
+  --spacing-2:  8px;
+  --spacing-3:  12px;
+  --spacing-4:  16px;
+  --spacing-6:  24px;
+  --spacing-8:  32px;
   --spacing-12: 48px;
 
-  /* Radius */
-  --radius-button: 10px;
-  --radius-card: 16px;
+  /* ── Radius ───────────────────────────────── */
+  --radius-button:   10px;
+  --radius-card:     16px;
   --radius-ai-panel: 20px;
 }
 
+/* ── Base ────────────────────────────────────── */
 :root {
   background-color: var(--color-bg);
   color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-sans);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-display);
+}
+
+/* ── Focus ring — accessible, brand-matched ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar — dark theme ───────────────── */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-bg); }
+::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+/* ── Transitions ─────────────────────────── */
+button, a, input, [role="button"] {
+  transition-property: color, background-color, border-color, opacity, box-shadow;
+  transition-timing-function: ease;
+  transition-duration: 150ms;
+}
+
+/* ── Skeleton shimmer ────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 25%,
+    var(--color-border)  50%,
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 6px;
+}
+
+/* ── Live pulse dot ──────────────────────── */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  animation: live-pulse 2s ease-in-out infinite;
 }

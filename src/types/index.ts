@@ -1,17 +1,18 @@
 export type BiasLabel = 
   | 'FOMO' 
+  | 'panic_sell' 
   | 'loss_aversion' 
   | 'overconfidence' 
   | 'recency_bias' 
   | 'anchoring' 
   | 'disposition_effect';
 
-export interface User {
+export interface Profile {
   id: string;
   created_at: string;
   display_name: string | null;
   starting_capital: number;
-  market_interests: ('stocks' | 'crypto' | 'both')[];
+  market_interests: string[];
 }
 
 export interface Portfolio {
@@ -41,7 +42,7 @@ export interface Trade {
   price: number;
   total_value: number;
   executed_at: string;
-  ai_coaching_id?: string;
+  ai_coaching_id: string | null;
 }
 
 export interface AICoachingEvent {
@@ -49,6 +50,7 @@ export interface AICoachingEvent {
   trade_id: string;
   user_id: string;
   bias_label: BiasLabel | null;
+  psychology_note: string | null;
   confidence: number;
   coach_message: string;
   explanation: string;
@@ -73,15 +75,48 @@ export interface BehavioralFingerprint {
 export interface EducationModule {
   id: string;
   title: string;
-  content: any; // JSONB
-  unlock_milestone: string;
+  content: any;
+  topic: 'blockchain' | 'defi' | 'risk_management' | 'options_prereq';
+  gates_instruments: string[];
   order_index: number;
+  quiz_pass_score: number;
 }
 
 export interface UserModuleProgress {
   id: string;
   user_id: string;
   module_id: string;
-  unlocked_at: string | null;
+  started_at: string | null;
   completed_at: string | null;
+  quiz_score: number | null;
+}
+
+export interface WeeklyDebrief {
+  id: string;
+  user_id: string;
+  week_start: string;
+  summary_json: {
+    replay_entries: any[];
+    top_biases: any[];
+    improvement_focus: string;
+  };
+  generated_at: string;
+}
+
+export interface SchoolGroup {
+  id: string;
+  name: string;
+  join_code: string;
+  teacher_user_id: string;
+  competition_start: string | null;
+  competition_end: string | null;
+  leaderboard_mode: 'return_pct' | 'risk_adjusted' | 'learning_completion';
+  created_at: string;
+}
+
+export interface GroupMembership {
+  id: string;
+  group_id: string;
+  user_id: string;
+  joined_at: string;
 }

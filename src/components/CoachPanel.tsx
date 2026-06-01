@@ -8,11 +8,12 @@ interface CoachPanelProps {
   bias?: BiasLabel;
   message: string;
   explanation: string;
+  psychologyNote?: string;
   isFallback?: boolean;
   onClose: () => void;
 }
 
-const CoachPanel = ({ bias, message, explanation, isFallback, onClose }: CoachPanelProps) => {
+const CoachPanel = ({ bias, message, explanation, psychologyNote, isFallback, onClose }: CoachPanelProps) => {
   return (
     <div className="fixed inset-y-0 right-0 w-[360px] bg-[#F8FAFC] border-l border-border shadow-lg z-[60] flex flex-col animate-in slide-in-from-right duration-300">
       <div className="p-6 border-b border-border/10 flex justify-between items-center text-[#1A1D25]">
@@ -58,6 +59,15 @@ const CoachPanel = ({ bias, message, explanation, isFallback, onClose }: CoachPa
             "{message}"
           </p>
         </div>
+
+        {/* Psychology Note */}
+        {psychologyNote && (
+          <div className="p-4 bg-accent/5 rounded-radius-card border border-accent/10">
+            <p className="text-sm text-accent font-medium italic leading-relaxed">
+              {psychologyNote}
+            </p>
+          </div>
+        )}
 
         {/* Explanation */}
         <div className="space-y-3">

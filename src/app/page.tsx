@@ -23,10 +23,10 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <Link 
-            href="/dashboard" 
+            href="/practice" 
             className="bg-primary text-text-inverse px-8 py-4 rounded-radius-button font-display font-bold text-xl hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
           >
-            Enter Trading Floor
+            Start Practice Trading
           </Link>
           <button className="bg-surface border border-border text-text px-8 py-4 rounded-radius-button font-display font-bold text-xl hover:bg-border transition-all flex items-center justify-center gap-2">
             View Live Markets

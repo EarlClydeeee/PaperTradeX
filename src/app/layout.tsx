@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import Sidebar from "@/components/Sidebar";
+import { Providers } from "./providers";
 import "../styles/globals.css";
 
 const inter = Inter({
@@ -37,10 +37,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-bg text-text min-h-screen flex`}
       >
-        <Sidebar />
-        <main className="flex-1 ml-[240px] min-h-screen">
-          {children}
-        </main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
