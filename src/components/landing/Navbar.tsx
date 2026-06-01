@@ -27,10 +27,11 @@ export default function LandingNavbar() {
           <ThemeToggle />
           <Link
             href={SIMULATION_URL}
-            className="inline-flex cursor-pointer items-center gap-2 rounded-radius-button bg-primary px-4 py-2 text-sm font-bold text-text-inverse transition-colors duration-200 hover:bg-primary-hover sm:px-5"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-radius-button bg-primary px-3 py-2 sm:px-5 text-sm font-bold text-text-inverse transition-colors duration-200 hover:bg-primary-hover min-h-[44px]"
           >
             <Play className="h-4 w-4" aria-hidden />
-            Open Simulator
+            <span className="sm:hidden">Simulator</span>
+            <span className="hidden sm:inline">Open Simulator</span>
           </Link>
         </div>
       </nav>

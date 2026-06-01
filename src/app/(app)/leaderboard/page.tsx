@@ -16,11 +16,11 @@ export default function LeaderboardPage() {
   const [sortBy, setSortBy] = useState<'return' | 'biasScore' | 'modules'>('return');
 
   return (
-    <div className="p-8 space-y-8">
-      <header className="flex justify-between items-start">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8 overflow-x-hidden">
+      <header className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
         <div>
           <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Competition</h2>
-          <h1 className="text-4xl font-display font-bold text-text">Finance 101 — Fall 2026</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-text">Finance 101 — Fall 2026</h1>
           <div className="flex items-center gap-4 mt-2">
             <div className="flex items-center gap-1.5 text-xs text-text-muted font-medium bg-bg px-2 py-1 rounded border border-border">
               <Users className="w-4 h-4" />
@@ -32,8 +32,8 @@ export default function LeaderboardPage() {
             </div>
           </div>
         </div>
-        <div className="flex gap-2">
-          <button className="px-4 py-2 bg-primary text-text-inverse rounded-radius-button text-sm font-bold hover:bg-primary-hover transition-colors duration-200 cursor-pointer">
+        <div className="flex gap-2 w-full sm:w-auto">
+          <button className="px-4 py-3 min-h-[44px] bg-primary text-text-inverse rounded-radius-button text-sm font-bold hover:bg-primary-hover transition-colors duration-200 cursor-pointer w-full sm:w-auto">
             Join Group
           </button>
         </div>
@@ -48,9 +48,9 @@ export default function LeaderboardPage() {
 
       {/* Leaderboard Table */}
       <div className="bg-surface border border-border rounded-radius-card shadow-sm overflow-hidden">
-        <div className="px-6 py-4 border-b border-border bg-bg/30 flex justify-between items-center">
+        <div className="px-4 sm:px-6 py-4 border-b border-border bg-bg/30 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <h3 className="text-xs text-text-muted font-bold uppercase tracking-widest">Rankings</h3>
-          <div className="flex bg-bg p-1 rounded-radius-button border border-border">
+          <div className="flex bg-bg p-1 rounded-radius-button border border-border w-full sm:w-auto overflow-x-auto">
             <SortButton active={sortBy === 'return'} onClick={() => setSortBy('return')}>% Return</SortButton>
             <SortButton active={sortBy === 'biasScore'} onClick={() => setSortBy('biasScore')}>Bias Score</SortButton>
             <SortButton active={sortBy === 'modules'} onClick={() => setSortBy('modules')}>Modules</SortButton>

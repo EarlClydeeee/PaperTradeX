@@ -74,16 +74,16 @@ export default function DashboardPage() {
   const hasChart = chartData.length >= 2;
 
   return (
-    <div className="p-8 space-y-8 relative overflow-x-hidden">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8 relative overflow-x-hidden">
       {/* Header */}
-      <header className="flex justify-between items-end">
+      <header className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
         <div>
           <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Overview</h2>
-          <h1 className="text-4xl font-display font-bold">Trading Floor</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold">Trading Floor</h1>
         </div>
         <Link
           href="/practice"
-          className="flex items-center gap-2 bg-primary text-text-inverse px-6 py-3 rounded-radius-button font-bold hover:bg-primary-hover transition-colors duration-150 cursor-pointer"
+          className="flex items-center justify-center gap-2 bg-primary text-text-inverse px-5 py-3 min-h-[44px] rounded-radius-button font-bold hover:bg-primary-hover transition-colors duration-150 cursor-pointer w-full sm:w-auto"
         >
           <LineChart className="w-5 h-5" />
           Open Practice Floor
@@ -93,12 +93,12 @@ export default function DashboardPage() {
       <div className="grid grid-cols-12 gap-6">
         {/* Portfolio Value + Chart */}
         <div className="col-span-12 lg:col-span-8 bg-surface border border-border rounded-radius-card p-6 shadow-sm">
-          <div className="flex justify-between items-start mb-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
             <div>
               <h3 className="text-text-muted text-xs font-bold uppercase tracking-widest mb-1">
                 Total Portfolio Value
               </h3>
-              <div className="text-5xl font-display font-bold tabular-nums">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tabular-nums">
                 ${metrics.totalValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}
               </div>
               <div

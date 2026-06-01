@@ -22,10 +22,10 @@ const radarData = [
 
 export default function ProfilePage() {
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8 overflow-x-hidden">
       <header>
         <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Analysis</h2>
-        <h1 className="text-4xl font-display font-bold text-text">Behavioral Fingerprint</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-text">Behavioral Fingerprint</h1>
         <p className="text-text-muted mt-2 max-w-2xl">
           Your unique trading DNA. The AI coach tracks your decisions to build this profile, 
           identifying the psychological patterns that impact your performance.

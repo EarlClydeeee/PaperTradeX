@@ -11,7 +11,7 @@ export default function HeroSection() {
           AI-coached paper trading
         </div>
 
-        <h1 className="mb-6 font-display text-5xl font-extrabold leading-tight text-text md:text-7xl">
+        <h1 className="mb-6 font-display text-4xl font-extrabold leading-tight text-text sm:text-5xl md:text-7xl">
           Trade fake money.
           <br />
           <span className="text-primary">Learn your real patterns.</span>

@@ -49,7 +49,7 @@ export default function MarketWatchlist({
               key={ticker}
               type="button"
               onClick={() => onSelectTicker(ticker)}
-              className={`w-full px-5 py-4 flex items-center justify-between text-left transition-colors duration-150 cursor-pointer ${
+              className={`w-full px-4 sm:px-5 py-4 min-h-[52px] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer ${
                 active
                   ? 'bg-primary/10 border-l-2 border-l-primary'
                   : 'hover:bg-bg/50'

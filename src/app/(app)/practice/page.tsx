@@ -109,14 +109,14 @@ export default function PracticePage() {
   const pnlUp = metrics.totalPnl >= 0;
 
   return (
-    <div className="p-8 space-y-8 relative overflow-x-hidden pb-24">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8 relative overflow-x-hidden pb-20 lg:pb-24">
       {/* Header */}
       <header className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-4">
         <div>
           <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">
             Practice floor
           </h2>
-          <h1 className="text-4xl font-display font-bold">Trade &amp; learn</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold">Trade &amp; learn</h1>
           <p className="text-text-muted text-sm mt-2 max-w-xl">
             Buy and sell with paper money. Gains and losses update from real market prices where
             available — so students practice against how the market actually looks today.
@@ -128,7 +128,7 @@ export default function PracticePage() {
             onClick={() => {
               if (confirm('Reset all positions, trades, and simulations?')) resetSession();
             }}
-            className="flex items-center gap-2 px-4 py-2 border border-border rounded-radius-button text-sm font-bold text-text-muted hover:text-text hover:bg-bg transition-colors duration-150 cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 min-h-[44px] border border-border rounded-radius-button text-sm font-bold text-text-muted hover:text-text hover:bg-bg transition-colors duration-150 cursor-pointer w-full sm:w-auto justify-center"
           >
             <RotateCcw className="w-4 h-4" />
             Reset portfolio
@@ -219,7 +219,7 @@ export default function PracticePage() {
                   return (
                     <div
                       key={position.ticker}
-                      className="px-6 py-4 flex items-center justify-between hover:bg-bg/30 transition-colors duration-150 cursor-pointer"
+                      className="px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 hover:bg-bg/30 transition-colors duration-150 cursor-pointer"
                       onClick={() => handleSelectTicker(position.ticker)}
                       role="button"
                       tabIndex={0}
@@ -232,7 +232,7 @@ export default function PracticePage() {
                           {price.toFixed(2)}
                         </p>
                       </div>
-                      <div className="text-right">
+                      <div className="text-left sm:text-right">
                         <div className="font-bold tabular-nums">
                           ${marketValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                         </div>
@@ -271,7 +271,7 @@ export default function PracticePage() {
                 {portfolio.trades.slice(0, 12).map((t) => (
                   <div
                     key={t.id}
-                    className="px-6 py-3 flex justify-between items-center text-sm hover:bg-bg/20 transition-colors duration-150"
+                    className="px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-sm hover:bg-bg/20 transition-colors duration-150"
                   >
                     <span className="flex items-center gap-2">
                       <span className="font-bold">{t.ticker}</span>

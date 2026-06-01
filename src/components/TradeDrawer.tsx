@@ -49,8 +49,15 @@ const TradeDrawer = ({ ticker, quote, buyingPower, onClose, onExecute }: TradeDr
   const remaining = action === 'buy' ? buyingPower - estimated : buyingPower + estimated;
 
   return (
-    <div className="fixed inset-y-0 right-0 w-[400px] bg-surface border-l border-border shadow-lg z-50 flex flex-col animate-in slide-in-from-right duration-300">
-      <div className="p-6 border-b border-border flex justify-between items-center">
+    <>
+      <button
+        type="button"
+        className="fixed inset-0 bg-black/40 z-40 cursor-pointer"
+        aria-label="Close trade panel"
+        onClick={onClose}
+      />
+      <div className="fixed inset-y-0 right-0 w-full sm:w-[400px] max-w-full bg-surface border-l border-border shadow-lg z-50 flex flex-col">
+      <div className="p-4 sm:p-6 border-b border-border flex justify-between items-center gap-3">
         <div>
           <h2 className="text-xs text-text-muted font-bold uppercase tracking-widest">Trade</h2>
           <div className="text-2xl font-display font-bold flex items-center gap-2">
@@ -71,17 +78,17 @@ const TradeDrawer = ({ ticker, quote, buyingPower, onClose, onExecute }: TradeDr
             </p>
           )}
         </div>
-        <button onClick={onClose} className="p-2 hover:bg-bg rounded-full transition-colors">
+        <button onClick={onClose} className="cursor-pointer p-2 hover:bg-bg rounded-full transition-colors duration-200 shrink-0" aria-label="Close">
           <X className="w-5 h-5" />
         </button>
       </div>
 
-      <div className="flex-1 p-6 space-y-8">
+      <div className="flex-1 p-4 sm:p-6 space-y-6 sm:space-y-8 overflow-y-auto">
         <div className="flex bg-bg p-1 rounded-radius-button border border-border">
           <button
             type="button"
             onClick={() => setAction('buy')}
-            className={`flex-1 py-3 rounded-radius-button font-bold transition-all ${
+            className={`flex-1 py-3 sm:py-3 min-h-[44px] rounded-radius-button font-bold transition-colors duration-200 cursor-pointer ${
               action === 'buy' ? 'bg-primary text-text-inverse shadow-sm' : 'text-text-muted'
             }`}
           >
@@ -90,7 +97,7 @@ const TradeDrawer = ({ ticker, quote, buyingPower, onClose, onExecute }: TradeDr
           <button
             type="button"
             onClick={() => setAction('sell')}
-            className={`flex-1 py-3 rounded-radius-button font-bold transition-all ${
+            className={`flex-1 py-3 sm:py-3 min-h-[44px] rounded-radius-button font-bold transition-colors duration-200 cursor-pointer ${
               action === 'sell' ? 'bg-error text-text-inverse shadow-sm' : 'text-text-muted'
             }`}
           >
@@ -105,6 +112,7 @@ const TradeDrawer = ({ ticker, quote, buyingPower, onClose, onExecute }: TradeDr
           <div className="relative">
             <input
               type="number"
+              inputMode="decimal"
               min={0}
               step={quote?.assetType === 'crypto' ? 0.0001 : 1}
               value={quantity || ''}
@@ -137,12 +145,12 @@ const TradeDrawer = ({ ticker, quote, buyingPower, onClose, onExecute }: TradeDr
         </div>
       </div>
 
-      <div className="p-6 border-t border-border bg-surface">
+      <div className="p-4 sm:p-6 border-t border-border bg-surface pb-[max(1rem,env(safe-area-inset-bottom))]">
         <button
           type="button"
           onClick={handleExecute}
           disabled={quantity <= 0 || price <= 0}
-          className={`w-full py-5 rounded-radius-button font-display font-bold text-xl flex items-center justify-center gap-2 transition-all ${
+          className={`w-full py-4 sm:py-5 min-h-[52px] rounded-radius-button font-display font-bold text-lg sm:text-xl flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer ${
             action === 'buy'
               ? 'bg-primary text-text-inverse hover:bg-primary-hover shadow-lg shadow-primary/20'
               : 'bg-error text-text-inverse shadow-lg shadow-error/20'
@@ -157,6 +165,7 @@ const TradeDrawer = ({ ticker, quote, buyingPower, onClose, onExecute }: TradeDr
         </p>
       </div>
     </div>
+    </>
   );
 };
 

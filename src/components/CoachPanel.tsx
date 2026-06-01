@@ -27,7 +27,14 @@ const CoachPanel = ({ bias, message, explanation, psychologyNote, isFallback, on
   const meta = bias ? BIAS_META[bias] : null;
 
   return (
-    <div className="fixed inset-y-0 right-0 w-[380px] bg-surface border-l border-border shadow-lg z-[60] flex flex-col">
+    <>
+      <button
+        type="button"
+        className="fixed inset-0 bg-black/40 z-[55] cursor-pointer"
+        aria-label="Close coach panel"
+        onClick={onClose}
+      />
+      <div className="fixed inset-y-0 right-0 w-full sm:w-[380px] max-w-full bg-surface border-l border-border shadow-lg z-[60] flex flex-col">
       {/* Header */}
       <div className="p-6 border-b border-border flex justify-between items-center">
         <div className="flex items-center gap-2">
@@ -109,7 +116,7 @@ const CoachPanel = ({ bias, message, explanation, psychologyNote, isFallback, on
       </div>
 
       {/* Footer actions */}
-      <div className="p-6 border-t border-border space-y-2">
+      <div className="p-4 sm:p-6 border-t border-border space-y-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <button
           onClick={onClose}
           className="cursor-pointer w-full py-4 bg-primary text-text-inverse rounded-radius-button font-bold text-sm hover:bg-primary-hover transition-colors duration-200"
@@ -125,6 +132,7 @@ const CoachPanel = ({ bias, message, explanation, psychologyNote, isFallback, on
         </button>
       </div>
     </div>
+    </>
   );
 };
 

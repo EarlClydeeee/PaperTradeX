@@ -57,17 +57,17 @@ const modules = [
 
 export default function EducationPage() {
   return (
-    <div className="p-8 space-y-8">
-      <header className="flex justify-between items-end">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 lg:space-y-8 overflow-x-hidden">
+      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-4">
         <div>
           <h2 className="text-text-muted text-sm font-medium uppercase tracking-wider">Learning Path</h2>
-          <h1 className="text-4xl font-display font-bold text-text">Education Center</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-text">Education Center</h1>
           <p className="text-text-muted mt-2 max-w-2xl">
             Master the fundamentals to unlock advanced trading instruments. 
             Complete modules to earn certificates and improve your risk-adjusted score.
           </p>
         </div>
-        <div className="bg-primary/10 border border-primary/20 rounded-radius-card p-4 flex items-center gap-4">
+        <div className="bg-primary/10 border border-primary/20 rounded-radius-card p-4 flex items-center gap-4 w-full lg:w-auto shrink-0">
           <div className="bg-primary p-2 rounded-lg text-white">
             <Zap className="w-5 h-5" />
           </div>
