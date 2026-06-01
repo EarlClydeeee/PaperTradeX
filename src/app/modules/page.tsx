@@ -1,9 +1,22 @@
 "use client";
 
 import React from 'react';
-import { BookOpen, Lock, CheckCircle, Clock, PlayCircle, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { BookOpen, Lock, CheckCircle, Clock, PlayCircle, Zap, LineChart } from 'lucide-react';
 
 const modules = [
+  {
+    id: 'm0',
+    title: 'Practice Trading Lab',
+    topic: 'practice',
+    description:
+      'Apply what you learn on the practice floor — paper money, live market prices, and AI coaching after every trade.',
+    status: 'in_progress',
+    time: 'Ongoing',
+    gates: [],
+    href: '/practice',
+    variant: 'practice' as const,
+  },
   {
     id: 'm1',
     title: 'Blockchain Basics',
@@ -60,7 +73,7 @@ export default function EducationPage() {
           </div>
           <div>
             <div className="text-[10px] text-primary font-bold uppercase tracking-widest">Progress</div>
-            <div className="text-lg font-display font-bold text-primary">1 / 4 Modules</div>
+            <div className="text-lg font-display font-bold text-primary">1 / 5 Modules</div>
           </div>
         </div>
       </header>
@@ -86,16 +99,41 @@ export default function EducationPage() {
   );
 }
 
-function ModuleCard({ title, description, status, time, gates }: any) {
+function ModuleCard({
+  title,
+  description,
+  status,
+  time,
+  gates,
+  href,
+  variant = 'lesson',
+}: {
+  title: string;
+  description: string;
+  status: string;
+  time: string;
+  gates: string[];
+  href?: string;
+  variant?: 'lesson' | 'practice';
+}) {
   const isLocked = status === 'locked';
   const isCompleted = status === 'completed';
+  const isPractice = variant === 'practice';
+
+  const actionLabel = isCompleted ? 'Review Content' : isPractice ? 'Open Practice Floor' : 'Start Module';
 
   return (
     <div className={`bg-surface border ${isLocked ? 'border-border opacity-75' : 'border-border shadow-sm'} rounded-radius-card overflow-hidden transition-all group hover:border-primary/50`}>
       <div className="p-6 space-y-4">
         <div className="flex justify-between items-start">
           <div className={`p-2 rounded-lg ${isLocked ? 'bg-bg' : 'bg-primary/10'} transition-colors`}>
-            {isLocked ? <Lock className="w-5 h-5 text-text-muted" /> : <BookOpen className="w-5 h-5 text-primary" />}
+            {isLocked ? (
+              <Lock className="w-5 h-5 text-text-muted" />
+            ) : isPractice ? (
+              <LineChart className="w-5 h-5 text-primary" />
+            ) : (
+              <BookOpen className="w-5 h-5 text-primary" />
+            )}
           </div>
           {isCompleted && (
             <div className="flex items-center gap-1 text-success text-xs font-bold uppercase tracking-wider">
@@ -135,9 +173,17 @@ function ModuleCard({ title, description, status, time, gates }: any) {
       <div className="px-6 py-4 bg-bg/50 border-t border-border flex justify-between items-center">
         {isLocked ? (
           <span className="text-xs text-text-muted font-bold uppercase tracking-wider italic">Prerequisites required</span>
+        ) : href ? (
+          <Link
+            href={href}
+            className="text-primary text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2"
+          >
+            {actionLabel}
+            <PlayCircle className="w-4 h-4" />
+          </Link>
         ) : (
           <button className="text-primary text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2">
-            {isCompleted ? 'Review Content' : 'Start Module'}
+            {actionLabel}
             <PlayCircle className="w-4 h-4" />
           </button>
         )}

@@ -76,7 +76,7 @@ export interface EducationModule {
   id: string;
   title: string;
   content: any;
-  topic: 'blockchain' | 'defi' | 'risk_management' | 'options_prereq';
+  topic: 'blockchain' | 'defi' | 'risk_management' | 'options_prereq' | 'practice';
   gates_instruments: string[];
   order_index: number;
   quiz_pass_score: number;

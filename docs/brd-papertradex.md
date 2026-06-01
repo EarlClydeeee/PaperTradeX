@@ -3,8 +3,8 @@
 **Project:** PaperTradeX — Zero-consequence AI-coached trading simulator
 **Date:** 2026-06-01
 **Version:** 0.2
-**Owner:** Founder [TBD — confirm]
-**Status:** Draft
+**Owner:** Earl Clyde Bañez
+**Status:** MVP
 
 ---
 

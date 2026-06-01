@@ -6,18 +6,14 @@ import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   User,
-  TrendingUp,
   Users,
   BookOpen,
   Settings,
   LineChart,
 } from 'lucide-react';
-import { usePortfolio } from '@/context/PortfolioContext';
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const { metrics } = usePortfolio();
-  const pnlUp = metrics.totalPnl >= 0;
 
   return (
     <aside className="w-[240px] h-screen bg-surface border-r border-border flex flex-col fixed left-0 top-0 z-40">
@@ -43,12 +39,6 @@ const Sidebar = () => {
           icon={<LayoutDashboard className="w-5 h-5" />}
           label="Dashboard"
           active={pathname === '/dashboard'}
-        />
-        <NavItem
-          href="/portfolio"
-          icon={<TrendingUp className="w-5 h-5" />}
-          label="Portfolio"
-          active={pathname === '/portfolio'}
         />
         <NavItem
           href="/profile"
@@ -77,22 +67,6 @@ const Sidebar = () => {
           label="Settings"
           active={pathname === '/settings'}
         />
-        <div className="mt-4 p-3 bg-bg rounded-radius-card border border-border">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="live-dot" />
-            <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider">
-              Paper portfolio
-            </span>
-          </div>
-          <div className="text-lg font-display font-bold">
-            ${metrics.totalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-          <div className={`text-xs font-medium mt-1 ${pnlUp ? 'text-success' : 'text-error'}`}>
-            {pnlUp ? '+' : ''}$
-            {metrics.totalPnl.toLocaleString(undefined, { maximumFractionDigits: 2 })} (
-            {metrics.returnPct.toFixed(2)}%)
-          </div>
-        </div>
       </div>
     </aside>
   );
